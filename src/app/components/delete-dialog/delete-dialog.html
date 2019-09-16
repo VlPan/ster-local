@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Do you really want to delete this product: {{data.activity.title}}</h1>
+<div mat-dialog-content class="delete-activity-dialog__content">
+  <p class="delete-activity-dialog__alert">You can not cancell this action!</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button  mat-dialog-close [mat-dialog-close]="false">No!</button>
+  <button mat-button color="error"  [mat-dialog-close]="true">Delete</button>
+</div>

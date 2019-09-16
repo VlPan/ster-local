@@ -1,0 +1,22 @@
+
+<div class="history-item">
+    <div class="history-item__options-container">
+        <div class="history-item__info history-item__name">{{historyItem.activity.title}}</div>
+        <div class="history-item__info">Scores:
+          <span class="history-item__number"
+            [ngClass]="{
+              'history-item__number--low': historyItem.scores < 150,
+              'history-item__number--normal': historyItem.scores >= 150 && historyItem.scores < 280,
+              'history-item__number--hight': historyItem.scores > 280
+            }"
+          >{{historyItem.scores}}</span></div>
+        <div class="history-item__info">Time: <span class="history-item__number"
+          [ngClass]="{
+            'history-item__number--low': historyItem.time < 600,
+            'history-item__number--normal': historyItem.time >= 600 && historyItem.scores < 3600,
+            'history-item__number--hight': historyItem.time > 3600
+          }"
+          >{{displayTime}}</span></div>
+    </div>
+    <canvas id="bar-chart" width="400" height="200" #chart></canvas>
+</div>

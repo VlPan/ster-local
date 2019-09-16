@@ -1,0 +1,28 @@
+@import './../../st-themes.scss';
+
+:host{
+  width: 100%;
+}
+
+.miny-activity {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    width: 65%;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+  }
+
+  &__select {
+    cursor: pointer;
+    color: $accent;
+    font-size: 1.2rem;
+    width: 20%;
+  }
+}

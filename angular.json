@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/app/st-themes.scss",
               "src/styles.scss"
             ],
             "scripts": []

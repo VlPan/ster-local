@@ -1,0 +1,12 @@
+
+@import './../../st-themes.scss';
+.delete-activity-dialog {
+  &__content {
+    overflow: hidden;
+  }
+
+  &__alert {
+    font-weight: 600;
+    color: $warn-light;
+  }
+}

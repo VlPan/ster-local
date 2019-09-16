@@ -1,0 +1,76 @@
+<div class="random-activity-view">
+  <div class="m-wrap tx">
+    <div class="o-watch-wrap">
+      <div class="watch-ui" [hidden]="isSelectActivityMenuOpened">
+        <div class="o-ring">
+          <div class="o-timer-wrap">
+            <div class="ring-wrap">
+              <svg class="c-t" width="200" height="200">
+                <circle class="c-c" cx="90" cy="100" r="97.5" transform="rotate(-90, 95, 95)" #circle/>
+              </svg>
+            </div>
+            <div class="o-timer">
+
+              <span class="t-time">{{format(ts.mins)}}:{{format(ts.secs)}}</span>
+              <span class="oop">of {{ts.mmin}} min</span>
+              <span class="hours" *ngIf="ts.hours > 0">{{format(ts.hours)}} <span class="hours-label">hours</span></span>
+            </div>
+          </div>
+          <div class="t-options">
+            <span class="t-options-time">
+              <span class="btn b-dec o-opt-btn b-revc glyphicon glyphicon-play"></span>
+              <span class="o-opt-btn display"></span>
+              <span class="btn b-inc o-opt-btn glyphicon glyphicon-play"></span>
+            </span>
+          </div>
+        </div>
+        <div class="o-controllers">
+          <button class="btn button sp-btn repeat-btn">
+            <span class="glyphicon glyphicon-repeat random-activity__icon" (click)="resetTimer()">
+              <i class="fa fa-undo"></i>
+            </span>
+          </button>
+          <button mat-icon-button class="btn button sp-btn pause-btn ">
+            <span class="in-btn glyphicon glyphicon-pause random-activity__icon random-activity__icon--big" (click)="toggleTimer()">
+                <i class="fa fa-play" *ngIf="!ts.running"></i>
+                <i class="fa fa-pause" *ngIf="ts.running"></i>
+            </span>
+          </button>
+          <button class="btn button sp-btn menu-btn button-menu">
+            <span class="glyphicon glyphicon-menu-hamburger random-activity__icon" (click)="toggleSelectActivityMenu()">
+              <i class="fa fa-bars"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+      <st-select-activity-menu
+      [hidden]="!isSelectActivityMenuOpened"
+      [activities]="activities"
+      (activitySelected)="selectActivity($event)"
+      (menuClosed)="closeMenu()"
+      > </st-select-activity-menu>
+      <div class="select-activity-menu" >
+
+      </div>
+    </div>
+    <div class="activity-slader">
+      <div class="activity-slader__container">
+        <div class="activity-slader__prev" (click)="getPrevActivity()" [ngClass]="{'activity-slader__prev--disabled': !hasPrev()}">
+          <i class="fa fa-backward"></i>
+        </div>
+        <div class="activity-activity-name">{{this.currentActivity && this.currentActivity.title}}</div>
+        <div class="activity-slader__next" (click)="getNextActivity()">
+          <i class="fa fa-forward"></i>
+        </div>
+      </div>
+    </div>
+
+    <button mat-icon-button
+     color="accent"
+     class="random-activity-view__done-btn"
+     [ngClass]="{'random-activity-view__done-btn--active': ts.mins >= ts.mmin}"
+     (click)="activityDone()"
+     >
+      <i class="fa fa-check-circle"></i>
+    </button>
+</div>

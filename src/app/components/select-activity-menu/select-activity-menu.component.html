@@ -1,0 +1,15 @@
+<div class="select-activity-menu">
+  <div class="select-activity-menu__close-icon"
+  (click)="closeMenu()"
+  >
+    <i class="fa fa-times"></i>
+  </div>
+
+  <st-miny-activity-card
+    *ngFor="let activity of activities"
+    [activity]="activity"
+    (activitySelected)="selectActivity($event)"
+  > </st-miny-activity-card>
+
+</div>
+

@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card__header">
+      <div class="card__title" [ngStyle]="{'color': activity.color}" #title  matTooltip={{activity.title}} [matTooltipClass]="'title'" [matTooltipDisabled]="!showTooltipTitle">{{activity.title}}</div>
+      <div class="card__settings" (click)="toggleCardSettingsMenu()"><i class="fa fa-cog"></i></div>
+      <div class="card__settings-menu" tabindex="0" #cardMenu
+       [hidden]="!cardSettingsMenuOpen"
+       [ngClass]="{'card__settings-menu--active': cardSettingsMenuOpen}"
+        (blur)="closeCardSettingsMenu()"
+       >
+        <div class="card__settings-menu-item card__settings-menu__delete" (click)="openActivityDeleteDialog()">
+          <i class="fa fa-trash" ></i>
+        </div>
+
+        <div class="card__settings-menu-item card__settings-menu__update" (click)="openActivityUpdateDialog()">
+          <i class="fa fa-edit"></i>
+        </div>
+      </div>
+  </div>
+  <div class="seporator">
+
+  </div>
+  <!-- <div class="card__playlists-list">
+    <div class="card__playlist-icon"></div>
+  </div> -->
+  <st-seporator [hidden]="!activity.desc" [marginTop]="5"></st-seporator>
+  <div class="card__desc" #desc  matTooltip={{activity.desc}} [matTooltipClass]="'desc'" [matTooltipDisabled]="!showTooltipDesc">{{activity.desc}}</div>
+  <st-seporator [hidden]="!activity.desc"></st-seporator>
+  <div class="card__params" >
+    <div class="card__frequency" *ngIf="activity.frequency"> Frequency: <span class="card__frequency-value">{{activity.frequency}}</span></div>
+    <div class="card__priority" *ngIf="activity.priority"> Priority: <span class="card__priority-value">{{activity.priority}}</span></div>
+  </div>
+
+  <div class="card__tags-container" >
+    <div class="card__tag" *ngFor="let tag of activity.tags">#{{tag}}</div>
+  </div>
+</div>

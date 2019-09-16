@@ -1,0 +1,27 @@
+<div mat-dialog-content class="activity-done-dialog">
+
+  <div class="activity-done-dialog__container">
+
+    <div class="activity-done-dialog__option" *ngFor="let option of data.activity.userOptions; index as i">
+      <div class="activity-done-dialog__option-name">{{option.name}}</div>
+      <div>
+        <mat-slider
+        class="activity-done-dialog__option-slider"
+        thumbLabel
+        value="optionsToSave[i].value"
+        min="option.min"
+        max="option.max"
+        [(ngModel)]="optionsToSave[i].value"
+        ></mat-slider>
+      </div>
+    </div>
+  </div>
+
+
+  <div mat-dialog-actions>
+    <button mat-stroked-button color="primary" (click)="saveHistory()">
+      Save History
+    </button>
+    <button mat-stroked-button mat-dialog-close [mat-dialog-close]="false" class="close-btn">Close</button>
+  </div>
+</div>

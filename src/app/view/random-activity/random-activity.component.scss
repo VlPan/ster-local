@@ -1,0 +1,318 @@
+// MY VARS
+$timer-font-size: 3rem;
+$buttons-font-size: 1.6rem;
+$white: #EDEDEF;
+
+@import './../../st-themes';
+button {
+  border: none;
+}
+
+.random-activity-view {
+  margin-top: -15px;
+  &__done-btn {
+    transform: translateY(-40px);
+    z-index: -1;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 3rem;
+    transition: all .3s;
+
+    &--active {
+      z-index: 1;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(20px);
+    }
+  }
+}
+
+.random-activity {
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $text-white;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &--big {
+      font-size: 1.4rem;
+    }
+  }
+
+  st-select-activity-menu {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+  }
+
+}
+// MY MIXINS
+@mixin flex-center() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+@mixin box($dimx, $dimy: 0) {
+  @if $dimy==0 {
+    $dimy: $dimx;
+  }
+
+  width: $dimx;
+  height: $dimy;
+}
+
+@mixin box-shadow($h, $v, $b, $s, $c) {
+  -webkit-box-shadow: $h $v $b $s $c;
+  -moz-box-shadow: $h $v $b $s $c;
+  box-shadow: $h $v $b $s $c;
+}
+
+
+.tx {
+  @include flex-center;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.m-wrap {
+  height: calc(100vh - 100px);
+  color: $white;
+  background-color: $accent-light-2;
+  display: flex;
+  flex-direction: column;
+
+  .o-watch-wrap {
+    @extend .tx;
+    @include box(350px, 400px);
+    background-color: #56259E;
+    background: -webkit-linear-gradient(to bottom, #7e49c8, #56259E 50%);
+    background: -o-linear-gradient(to bottom, #7e49c8, #56259E 50%);
+    background: -moz-linear-gradient(to bottom, #7e49c8, #56259E 50%);
+    background: linear-gradient(to bottom, #7e49c8, #56259E 50%);
+    border-radius: 25px;
+    @include box-shadow(0px, 0px, 5px, 0px, rgba(0, 0, 0, 1));
+    border: 3px solid;
+
+    .menu-open .t-options {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    .menu-open .o-timer-wrap {
+      top: -15px !important;
+      opacity: 0;
+    }
+
+    .watch-ui {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      .o-ring {
+        position: relative;
+        @include box(200px);
+        margin: auto;
+
+        .o-timer-wrap {
+          position: relative;
+          top: 0;
+          -webkit-transition: opacity .5s linear, top .5s linear;
+          transition: opacity .5s linear, top .5s linear;
+        }
+
+        .ring-wrap {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto;
+          @extend .tx;
+
+          .c-t {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            .c-c {
+              fill: transparent;
+              stroke: $white;
+              stroke-width: 5;
+              stroke-dasharray: 612;
+              stroke-dashoffset: 612;
+              -webkit-transition: stroke-dashoffset 1s linear, opacity 1s linear;
+              transition: stroke-dashoffset 1s linear, opacity 1s linear;
+            }
+          }
+        }
+
+        .o-timer {
+          @extend .t-center;
+          font-size: $timer-font-size;
+          @extend .tx;
+          width: 200px;
+          height: 200px;
+          border: 5px solid #7e49c8;
+          border-radius: 50%;
+
+          .t-time {
+            text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+          }
+
+          .hours {
+            position: absolute;
+            top: 15px;
+            font-size: 2rem;
+
+            .hours-label {
+              font-size: 18px;
+              color: #7e49c8;
+            }
+          }
+
+
+
+          .oop {
+            position: absolute;
+            bottom: 35px;
+            font-size: 18px;
+            color: #7e49c8;
+            left: 0;
+            right: 0;
+            margin: auto;
+            cursor: default;
+          }
+        }
+
+        .t-options {
+          position: absolute;
+          top: 0px;
+          opacity: 0;
+          visibility: hidden;
+          -webkit-transition: opacity .3s linear, visibility .3s linear;
+          transition: opacity .3s linear, visibility .3s linear;
+
+          .b-revc {
+            transform: rotate(180deg);
+          }
+
+          .o-opt-btn {
+            box-shadow: none;
+
+            &:hover,
+            &:focus {
+              color: inherit;
+            }
+
+            &:active {
+              color: lightgrey;
+            }
+
+            &.display {
+              min-width: 70px;
+              cursor: default;
+              color: $white;
+            }
+          }
+
+          .t-options-time {
+            @extend .o-timer;
+            border: none;
+          }
+        }
+      }
+    }
+
+    .o-controllers {
+      text-align: center;
+
+      .sp-btn {
+        position: relative;
+        background: none;
+        font-size: $buttons-font-size;
+        outline: none;
+        box-shadow: none;
+
+        &:hover,
+        &:focus {
+          color: inherit;
+        }
+
+        &:active {
+          color: darken($white, 10%);
+        }
+      }
+
+      .pause-btn {
+        font-size: 30px;
+        @include box(60px);
+        margin: auto;
+        background: #5fdeae;
+        border-radius: 50%;
+        margin-top: -20px;
+        @include box-shadow(0px, 0px, 10px, 0px, rgba(0, 0, 0, 0.4));
+
+        &:active {
+          background: darken(#5fdeae, 10%);
+          @include box-shadow(0px, 0px, 10px, 0px, rgba(0, 0, 0, 0.6));
+        }
+      }
+
+      .in-btn {
+        position: absolute;
+        top: -1px;
+        left: 2px;
+        bottom: 0px;
+        right: 0;
+        @extend .tx;
+      }
+    }
+  }
+}
+
+.activity-slader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  border-radius: 7px;
+  -webkit-box-shadow: 10px 10px 33px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 33px -4px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 33px -4px rgba(0,0,0,0.75);
+  &__container{
+    background: $primary-light;
+    min-width: 230px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & > * {
+      margin-left: 15px;
+    }
+  }
+
+  &__next, &__prev {
+    cursor: pointer;
+    font-size: 1.4rem;
+  }
+
+  &__next--disabled {
+    color: rgba($white, .3);
+  }
+
+  &__prev--disabled {
+    color: rgba($white, .3);
+  }
+}

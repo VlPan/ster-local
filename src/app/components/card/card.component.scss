@@ -1,0 +1,154 @@
+
+@import './../../st-themes.scss';
+
+.card {
+  width: 300px;
+  min-height: 300px;
+  // overflow: hidden;
+  transition: all .4s;
+  animation: fillIn .3s linear;
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  border-radius: 15px;
+  color: $text-primary;
+  -webkit-box-shadow: 4px 3px 23px 0px rgba(0,0,0,0.64);
+  -moz-box-shadow: 4px 3px 23px 0px rgba(0,0,0,0.64);
+  box-shadow:4px 3px 23px 0px rgba(0,0,0,0.64);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    max-width: 200px;
+    color: $primary;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__settings {
+    cursor: pointer;
+    color: $text-primary;
+    font-size: 1.4rem;
+  }
+
+  &__settings-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 60%;
+    background: $black-transparent-3;
+    color: white;
+    border-radius: 7px;
+    opacity: 0;
+    transform: translateX(120px);
+    transition: all .3s;
+    z-index: -1;
+  }
+
+  &__settings-menu:focus {
+    outline: none;
+  }
+
+  &__settings-menu__delete {
+    color: $warn;
+    cursor: pointer;
+
+
+    &:hover {
+      background: $warn;
+      color: $text-white;
+    }
+  }
+
+  &__settings-menu__update {
+    color: $accent-dark;
+    cursor: pointer;
+
+    &:hover {
+      background: $accent-dark;
+      color: $text-white;
+    }
+  }
+
+  &__settings-menu-item {
+    font-size: 1.4rem;
+    padding: 15px 12px;
+    transition: all .3s;
+  }
+
+  &__settings-menu--active {
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(23%);
+  }
+
+  &__desc{
+    padding: 0 20px 20px 20px;
+    height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__params {
+    padding: 0 5px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  &__frequency {
+    color: $primary;
+  }
+  &__priority {
+    color: $accent-dark;
+  }
+
+  &__frequency-value {
+    font-weight: 700;
+  }
+  &__priority-value {
+    font-weight: 700;
+  }
+
+  &__tags-container {
+
+    align-items: flex-end;
+    margin-top: 30px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    min-height: 40px;
+    width: 100%;
+  }
+
+  &__tag {
+    background-color: $black-transparent-2;
+    padding: 3px 6px;
+    color: white;
+    border-radius: 3px;
+    margin-right: 10px;
+    margin-top: 7px;
+  }
+}
+
+@keyframes fillIn  {
+  from {
+    opacity: 0;
+    transform: translateY(-15px)
+  }
+
+  to {
+    opacity: 100;
+    transform: translateY(0px)
+  }
+}

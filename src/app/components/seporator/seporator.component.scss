@@ -1,0 +1,11 @@
+@import "./../../st-themes.scss";
+.seporator {
+  display: flex;
+  justify-content: space-around;
+  &__line {
+    height: 2px;
+    background: $text-light-2;
+    border-radius: 1px;
+    width: 40%
+  }
+}

@@ -1,0 +1,38 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$st-theme-light-primary: mat-palette($mat-blue, 700, 600, 900);
+$st-theme-light-accent: mat-palette($mat-teal, 500, 400, 600);
+$st-theme-light-warn: mat-palette($mat-red, A400, 400, 800);
+
+
+$st-light-theme:   mat-light-theme($st-theme-light-primary, $st-theme-light-accent, $st-theme-light-warn);
+
+@include angular-material-theme($st-light-theme);
+
+/* colors */
+$primary: #1976d2;
+$primary-light: #1e88e5;
+$primary-dark: #0d47a1;
+
+$accent: #009688;
+$accent-light:#26a69a;
+$accent-light-2:#55EB72;
+$accent-dark: #00897b;
+$accent-dark-2: #00695c;
+
+
+$warn: #ff1744;
+$warn-light: #ef5350;
+$warn-dark: #c62828;
+
+$text-primary: #616161;
+$text-light: #757575;
+$text-light-2: #d7dae0;
+$text-dark: #212121;
+
+$text-white: whitesmoke;
+$black-transparent: rgba(0,0,0, .8);
+$black-transparent-2: rgba(0,0,0, .3);
+$black-transparent-3: rgba(0,0,0, .6);
+

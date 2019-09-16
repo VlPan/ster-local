@@ -1,0 +1,29 @@
+<div mat-dialog-content class="add-activity-dialog">
+  <form (ngSubmit)="submit()" class="add-activity-dialog__form">
+    <mat-form-field class="add-activity-dialog__form-input-container">
+      <input matInput placeholder="Title" [formControl]="titleFormControl" [errorStateMatcher]="matcher" (keyup)="oneValueChanged()">
+      <mat-error *ngIf="titleFormControl.hasError('required')">
+        Title is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="add-activity-dialog__form-input-container">
+      <textarea matInput placeholder="Description" [formControl]="descFormControl" (keyup)="oneValueChanged()" [errorStateMatcher]="matcher"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="add-activity-dialog__form-input-container">
+      <input matInput placeholder="Frequency" [formControl]="frequencyFormControl" type="number" (keyup)="oneValueChanged()" [errorStateMatcher]="matcher">
+    </mat-form-field>
+
+    <mat-form-field class="add-activity-dialog__form-input-container">
+      <input matInput placeholder="Priority" [formControl]="priorityFormControl" type="number" (keyup)="oneValueChanged()" [errorStateMatcher]="matcher">
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-stroked-button [disabled]="titleFormControl.hasError('required') || !isOneValChanged" color="primary">
+        Update Activity
+      </button>
+      <button mat-stroked-button mat-dialog-close [mat-dialog-close]="false" class="close-btn">Close</button>
+    </div>
+  </form>
+</div>
