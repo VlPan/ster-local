@@ -1,3 +1,12 @@
-<div *ngFor="let item of activityHistory">
-  <st-history-item [historyItem]="item"></st-history-item>
+<div class="history">
+  <div class="history__today">
+    <span class="history__ar" (click)="getPrevDay()"> < </span>
+    {{selectedDay}}.{{selectedMonth}}.{{selectedYear}}
+    <span class="history__ar" (click)="getNextDay()"
+    *ngIf="shouldShowNextDay"
+    > > </span>
+  </div>
+  <div *ngFor="let item of activityHistory">
+    <st-history-item [historyItem]="item"></st-history-item>
+  </div>
 </div>

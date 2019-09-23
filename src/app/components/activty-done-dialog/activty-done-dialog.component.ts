@@ -39,7 +39,8 @@ export class ActivtyDoneDialogComponent implements OnInit {
       activity: this.data.activity,
       savedOptions: this.optionsToSave,
       time: this.data.time,
-      scores
+      scores,
+      savedAt: new Date()
     };
 
     this.dialogHistoryRef.close(historyItem);

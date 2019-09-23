@@ -16,6 +16,7 @@ export interface ActivityHistoryItem {
   activity: Activity;
   savedOptions: SavedOption[];
   time: number;
+  savedAt: Date;
   scores: number;
 }
 

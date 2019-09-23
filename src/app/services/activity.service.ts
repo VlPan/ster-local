@@ -17,7 +17,7 @@ constructor(private ls: LocalStorage) {}
 
   addActivity(activity: Activity) {
     const oldActivities = this.ls.get(this.ACTIVITIES_KEY);
-    const newActivities = [...oldActivities, activity];
+    const newActivities = [activity, ...oldActivities];
     this.ls.set(this.ACTIVITIES_KEY, newActivities);
   }
 
@@ -32,7 +32,7 @@ constructor(private ls: LocalStorage) {}
     const activityToUpdate = oldActivities.find(a => a.id === activity.id);
     const newActivity = Object.assign(activityToUpdate, activity);
     oldActivities = oldActivities.filter(a => a.id !== activity.id);
-    const newActivities = [...oldActivities, newActivity];
+    const newActivities = [newActivity, ...oldActivities];
     this.ls.set(this.ACTIVITIES_KEY, newActivities);
   }
 

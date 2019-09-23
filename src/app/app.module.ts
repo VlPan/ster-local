@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HistoryItemComponent } from './components/history-item/history-item.component';
 import { MinyActivityCardComponent } from './components/miny-activity-card/miny-activity-card.component';
+import { PageNotFoundView } from './view/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MinyActivityCardComponent } from './components/miny-activity-card/miny-
     SeporatorComponent,
     HistoryItemComponent,
     SelectActivityMenuComponent,
-    MinyActivityCardComponent
+    MinyActivityCardComponent,
+    PageNotFoundView
   ],
   imports: [
     BrowserModule,
